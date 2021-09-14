@@ -1,7 +1,6 @@
 """Tests for the Plugwise Sensor integration."""
 
 from homeassistant.config_entries import ConfigEntryState
-
 from tests.common import Mock
 from tests.components.plugwise.common import async_init_integration_gw
 

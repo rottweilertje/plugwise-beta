@@ -1,15 +1,14 @@
 """Tests for the Plugwise Climate integration."""
 
-from plugwise.exceptions import PlugwiseException
-
 from homeassistant.components.climate.const import (
     HVAC_MODE_AUTO,
     HVAC_MODE_HEAT,
     HVAC_MODE_OFF,
 )
 from homeassistant.config_entries import ConfigEntryState
-
 from tests.components.plugwise.common import async_init_integration_gw
+
+from plugwise.exceptions import PlugwiseException
 
 
 async def test_adam_climate_entity_attributes(hass, mock_smile_adam):

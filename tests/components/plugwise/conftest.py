@@ -4,16 +4,16 @@ import re
 from unittest.mock import AsyncMock, Mock, patch
 
 import jsonpickle
+import pytest
+from tests.common import load_fixture
+from tests.test_util.aiohttp import AiohttpClientMocker
+
 from plugwise.exceptions import (
     ConnectionFailedError,
     InvalidAuthentication,
     PlugwiseException,
     XMLDataMissingError,
 )
-import pytest
-
-from tests.common import load_fixture
-from tests.test_util.aiohttp import AiohttpClientMocker
 
 
 def _read_json(environment, call):

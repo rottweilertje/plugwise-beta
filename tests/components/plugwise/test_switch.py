@@ -1,10 +1,9 @@
 """Tests for the Plugwise switch integration."""
 
-from plugwise.exceptions import PlugwiseException
-
 from homeassistant.config_entries import ConfigEntryState
-
 from tests.components.plugwise.common import async_init_integration_gw
+
+from plugwise.exceptions import PlugwiseException
 
 
 async def test_adam_climate_switch_entities(hass, mock_smile_adam):
