@@ -410,7 +410,7 @@ async def test_form_other_problem(hass, mock_smile):
 
 
 async def test_options_flow_power(hass, mock_smile) -> None:
-    """Test config flow options DSMR environments."""
+    """Test config flow options plugwise environments."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title=CONF_NAME,
