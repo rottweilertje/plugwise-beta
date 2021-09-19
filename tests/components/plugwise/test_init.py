@@ -5,7 +5,10 @@ import asyncio
 from homeassistant.components.plugwise.const import DOMAIN
 from homeassistant.config_entries import ConfigEntryState
 from tests.common import AsyncMock, MockConfigEntry
-from tests.components.plugwise.common import async_init_integration_gw
+from tests.components.plugwise.common import (
+    async_init_integration_gw,
+    async_init_integration_usb,
+)
 
 from plugwise.exceptions import XMLDataMissingError
 
@@ -62,3 +65,22 @@ async def test_async_setup_entry_fail(hass):
     await hass.config_entries.async_setup(entry.entry_id)
     await hass.async_block_till_done()
     assert entry.state == ConfigEntryState.SETUP_ERROR
+
+
+# USB Stick tests
+
+
+async def test_stick_porterror(hass, mock_stick_porterror):
+    """Test porterror failore for Stick."""
+    entry = await async_init_integration_usb(hass, mock_stick_porterror)
+    assert entry.state == ConfigEntryState.SETUP_ERROR
+
+
+async def test_unload_entry_stick(hass, mock_stick):
+    """Test being able to unload a stick entry."""
+    entry = await async_init_integration_usb(hass, mock_stick)
+
+    await hass.config_entries.async_unload(entry.entry_id)
+    await hass.async_block_till_done()
+    assert entry.state == ConfigEntryState.NOT_LOADED
+    assert not hass.data[DOMAIN]

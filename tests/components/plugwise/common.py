@@ -24,3 +24,22 @@ async def async_init_integration_gw(
         await hass.async_block_till_done()
 
     return entry
+
+
+async def async_init_integration_usb(
+    hass: HomeAssistant,
+    skip_setup: bool = False,
+):
+    """Initialize the Stick integration."""
+
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        data={"usb_path": "/dev/ttyUSB0"},
+    )
+    entry.add_to_hass(hass)
+
+    if not skip_setup:
+        await hass.config_entries.async_setup(entry.entry_id)
+        await hass.async_block_till_done()
+
+    return entry

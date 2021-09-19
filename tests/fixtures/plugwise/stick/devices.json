@@ -1,0 +1,102 @@
+{
+	"000ABC0000123456": {
+		"mac": "000ABC0000123456",
+        "hardware_model": "Circle+ type F",
+        "firmware_version": "2011-06-27 10:47:37",
+		"features": {
+			"py/tuple": [
+				"energy_consumption_today",
+				"ping",
+				"power_1s",
+				"power_8s",
+				"power_con_cur_hour",
+				"power_con_prev_hour",
+				"power_con_today",
+				"power_con_yesterday",
+				"power_prod_cur_hour",
+				"RSSI_in",
+                "RSSI_out",
+				"relay"
+				]
+			},
+        "relay_state": true,
+        "energy_consumption_today": 100,
+        "ping": 10,
+        "current_power_usage": 50,
+        "current_power_usage_8_sec": 50,
+        "power_consumption_current_hour": 10,
+        "power_consumption_previous_hour": 5,
+        "power_consumption_today": 100,
+        "power_consumption_yesterday": 150,
+        "power_production_current_hour": 5,
+        "rssi_in": 50,
+        "rssi_out": 60
+	},
+	"000DEF0000654321": {
+		"mac": "000DEF0000654321",
+        "hardware_model": "Circle type F",
+        "firmware_version": "2011-06-27 10:52:18",
+		"features": {
+			"py/tuple": [
+				"energy_consumption_today",
+				"ping",
+				"power_1s",
+				"power_8s",
+				"power_con_cur_hour",
+				"power_con_prev_hour",
+				"power_con_today",
+				"power_con_yesterday",
+				"power_prod_cur_hour",
+				"RSSI_in",
+                "RSSI_out",
+				"relay"
+				]
+			},
+        "relay_state": false,
+        "energy_consumption_today": 100,
+        "ping": 10,
+        "current_power_usage": 50,
+        "current_power_usage_8_sec": 50,
+        "power_consumption_current_hour": 10,
+        "power_consumption_previous_hour": 5,
+        "power_consumption_today": 100,
+        "power_consumption_yesterday": 150,
+        "power_production_current_hour": 5,
+        "rssi_in": 50,
+        "rssi_out": 60
+    },
+	"0001230000ABC123": {
+		"mac": "0001230000ABC123",
+        "hardware_model": "Scan",
+        "firmware_version": "2011-06-27 10:55:44",
+		"features": {
+			"py/tuple": [
+				"ping",
+				"RSSI_in",
+                "RSSI_out",
+				"motion"
+				]
+			},
+        "ping": 10,
+        "rssi_in": 50,
+        "rssi_out": 60,
+        "motion": false
+	},
+	"0001230000DEF123": {
+		"mac": "0001230000DEF123",
+        "hardware_model": "SCAN",
+        "firmware_version": "2011-06-27 10:55:44",
+		"features": {
+			"py/tuple": [
+				"ping",
+				"RSSI_in",
+                "RSSI_out",
+				"motion"
+				]
+			},
+        "ping": 10,
+        "rssi_in": 50,
+        "rssi_out": 60,
+        "motion": true
+	}
+}

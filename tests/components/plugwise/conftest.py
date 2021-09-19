@@ -1,7 +1,7 @@
 """Setup mocks for the Plugwise integration tests."""
 
 import re
-from unittest.mock import AsyncMock, Mock, patch
+from unittest.mock import AsyncMock, MagicMock, Mock, patch
 
 import jsonpickle
 import pytest
@@ -12,6 +12,7 @@ from plugwise.exceptions import (
     ConnectionFailedError,
     InvalidAuthentication,
     PlugwiseException,
+    PortError,
     XMLDataMissingError,
 )
 
@@ -188,3 +189,43 @@ def mock_stretch():
         )
 
         yield smile_mock.return_value
+
+
+@pytest.fixture(name="mock_stick_porterror")
+def mock_stick_porterror():
+    """Create a Stick environment with port error"""
+    with patch("homeassistant.components.plugwise.usb.Stick") as stick_mock:
+        stick_mock.return_value.connect.side_effect = PortError
+
+
+@pytest.fixture(name="mock_stick")
+def mock_stick():
+    """Create a Stick environment for testing"""
+    chosen_env = "stick"
+
+    def stick_scan_side_effect(callback_function):
+        callback_function()
+
+    with patch("homeassistant.components.plugwise.usb.Stick") as stick_mock:
+        stick_mock.return_value.connect.side_effect = MagicMock(return_value=None)
+        stick_mock.return_value.initialize_stick.side_effect = MagicMock(
+            return_value=None
+        )
+        stick_mock.return_value.initialize_circle_plus.side_effect = MagicMock(
+            return_value=None
+        )
+        stick_mock.return_value.scan.side_effect = stick_scan_side_effect
+        stick_mock.return_value.devices = _read_json(chosen_env, "devices")
+        stick_mock.return_value.joined_nodes = 4
+        stick_mock.return_value.auto_update.side_effect = MagicMock(return_value=None)
+        stick_mock.return_value.allow_join_requests.side_effect = MagicMock(
+            return_value=None
+        )
+        stick_mock.return_value.subscribe_stick_callback.side_effect = MagicMock(
+            return_value=None
+        )
+        stick_mock.return_value.node_join.side_effect = MagicMock(return_value=None)
+        stick_mock.return_value.node_unjoin.side_effect = MagicMock(return_value=None)
+        stick_mock.return_value.disconnect.side_effect = MagicMock(return_value=None)
+
+        yield stick_mock.return_value

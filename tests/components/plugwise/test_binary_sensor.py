@@ -3,8 +3,10 @@
 from homeassistant.config_entries import ConfigEntryState
 from homeassistant.const import STATE_OFF, STATE_ON
 from homeassistant.helpers.entity_registry import async_get_registry
-
-from tests.components.plugwise.common import async_init_integration_gw
+from tests.components.plugwise.common import (
+    async_init_integration_gw,
+    async_init_integration_usb,
+)
 
 
 async def test_anna_climate_binary_sensor_entities(hass, mock_smile_anna):
@@ -77,3 +79,27 @@ async def test_adam_climate_binary_sensor_change(hass, mock_smile_adam):
     assert "unreachable" in state.attributes.get("WARNING_msg")[0]
     assert not state.attributes.get("error_msg")
     assert not state.attributes.get("other_msg")
+
+
+async def test_stick_binary_sensor_entities(hass, mock_stick):
+    """Test creation of USB binary_sensor entities."""
+    entry = await async_init_integration_usb(hass, mock_stick)
+    assert entry.state == ConfigEntryState.LOADED
+
+    a_sensor = "binary_sensor.motion_bc123"
+    registry = await async_get_registry(hass)
+    updated_entry = registry.async_update_entity(a_sensor, disabled_by=None)
+
+    assert updated_entry != entry
+    assert updated_entry.disabled is False
+
+    await hass.async_block_till_done()
+
+    await hass.config_entries.async_reload(entry.entry_id)
+    await hass.async_block_till_done()
+
+    state = hass.states.get("binary_sensor.motion_bc123")
+    assert str(state.state) == STATE_OFF
+
+    state = hass.states.get("binary_sensor.motion_ef123")
+    assert str(state.state) == STATE_OFF
