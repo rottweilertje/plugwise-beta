@@ -10,7 +10,14 @@ from tests.components.plugwise.common import (
     async_init_integration_usb,
 )
 
-from plugwise.exceptions import XMLDataMissingError
+from plugwise.exceptions import (
+    CirclePlusError,
+    NetworkDown,
+    PortError,
+    StickInitError,
+    TimeoutException,
+    XMLDataMissingError,
+)
 
 
 async def test_smile_unauthorized(hass, mock_smile_unauth):
@@ -70,10 +77,44 @@ async def test_async_setup_entry_fail(hass):
 # USB Stick tests
 
 
-async def test_stick_porterror(hass, mock_stick_porterror):
+async def test_stick_porterror(hass, mock_stick):
     """Test porterror failore for Stick."""
-    entry = await async_init_integration_usb(hass, mock_stick_porterror)
-    assert entry.state == ConfigEntryState.SETUP_ERROR
+    mock_stick.return_value.connect.side_effect = PortError
+
+    entry = await async_init_integration_usb(hass, mock_stick)
+    assert entry.state == ConfigEntryState.SETUP_RETRY
+
+
+async def test_stick_stick_init_error(hass, mock_stick):
+    """Test StickInitError failore for Stick."""
+    mock_stick.return_value.connect.side_effect = StickInitError
+
+    entry = await async_init_integration_usb(hass, mock_stick)
+    assert entry.state == ConfigEntryState.SETUP_RETRY
+
+
+async def test_stick_circleplus_error(hass, mock_stick):
+    """Test CirclePlusError failore for Stick."""
+    mock_stick.return_value.connect.side_effect = CirclePlusError
+
+    entry = await async_init_integration_usb(hass, mock_stick)
+    assert entry.state == ConfigEntryState.SETUP_RETRY
+
+
+async def test_stick_network_down(hass, mock_stick):
+    """Test NetworkDown failore for Stick."""
+    mock_stick.return_value.connect.side_effect = NetworkDown
+
+    entry = await async_init_integration_usb(hass, mock_stick)
+    assert entry.state == ConfigEntryState.SETUP_RETRY
+
+
+async def test_stick_timeout_exception(hass, mock_stick):
+    """Test NetworkDown failore for Stick."""
+    mock_stick.return_value.connect.side_effect = TimeoutException
+
+    entry = await async_init_integration_usb(hass, mock_stick)
+    assert entry.state == ConfigEntryState.SETUP_RETRY
 
 
 async def test_unload_entry_stick(hass, mock_stick):

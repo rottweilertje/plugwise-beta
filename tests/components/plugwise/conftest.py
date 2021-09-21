@@ -12,7 +12,6 @@ from plugwise.exceptions import (
     ConnectionFailedError,
     InvalidAuthentication,
     PlugwiseException,
-    PortError,
     XMLDataMissingError,
 )
 
@@ -189,13 +188,6 @@ def mock_stretch():
         )
 
         yield smile_mock.return_value
-
-
-@pytest.fixture(name="mock_stick_porterror")
-def mock_stick_porterror():
-    """Create a Stick environment with port error"""
-    with patch("homeassistant.components.plugwise.usb.Stick") as stick_mock:
-        stick_mock.return_value.connect.side_effect = PortError
 
 
 @pytest.fixture(name="mock_stick")
