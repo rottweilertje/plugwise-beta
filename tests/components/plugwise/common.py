@@ -1,6 +1,6 @@
 """Common initialisation for the Plugwise integration."""
 
-from homeassistant.components.plugwise.const import DOMAIN
+from homeassistant.components.plugwise.const import CONF_USB_PATH, DOMAIN
 from homeassistant.core import HomeAssistant
 from tests.common import MockConfigEntry
 from tests.test_util.aiohttp import AiohttpClientMocker
@@ -28,13 +28,14 @@ async def async_init_integration_gw(
 
 async def async_init_integration_usb(
     hass: HomeAssistant,
+    mock_of_stick: object,
     skip_setup: bool = False,
 ):
     """Initialize the Stick integration."""
 
     entry = MockConfigEntry(
         domain=DOMAIN,
-        data={"usb_path": "/dev/ttyUSB0"},
+        data={CONF_USB_PATH: "/dev/ttyUSB0"},
     )
     entry.add_to_hass(hass)
 
