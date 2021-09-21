@@ -1,6 +1,6 @@
 """Tests for the Plugwise Climate integration."""
-
 import asyncio
+from unittest.mock import Mock
 
 from homeassistant.components.plugwise.const import DOMAIN
 from homeassistant.config_entries import ConfigEntryState
@@ -79,40 +79,28 @@ async def test_async_setup_entry_fail(hass):
 
 async def test_stick_porterror(hass, mock_stick):
     """Test porterror failore for Stick."""
-    mock_stick.return_value.connect.side_effect = PortError
-
+    mock_stick.return_value.connect = Mock(side_effect=(PortError))
     entry = await async_init_integration_usb(hass, mock_stick)
     assert entry.state == ConfigEntryState.SETUP_RETRY
 
 
 async def test_stick_stick_init_error(hass, mock_stick):
     """Test StickInitError failore for Stick."""
-    mock_stick.return_value.connect.side_effect = StickInitError
-
-    entry = await async_init_integration_usb(hass, mock_stick)
-    assert entry.state == ConfigEntryState.SETUP_RETRY
-
-
-async def test_stick_circleplus_error(hass, mock_stick):
-    """Test CirclePlusError failore for Stick."""
-    mock_stick.return_value.connect.side_effect = CirclePlusError
-
+    mock_stick.return_value.initialize_stick = Mock(side_effect=(StickInitError))
     entry = await async_init_integration_usb(hass, mock_stick)
     assert entry.state == ConfigEntryState.SETUP_RETRY
 
 
 async def test_stick_network_down(hass, mock_stick):
     """Test NetworkDown failore for Stick."""
-    mock_stick.return_value.connect.side_effect = NetworkDown
-
+    mock_stick.return_value.initialize_stick = Mock(side_effect=(NetworkDown))
     entry = await async_init_integration_usb(hass, mock_stick)
     assert entry.state == ConfigEntryState.SETUP_RETRY
 
 
 async def test_stick_timeout_exception(hass, mock_stick):
     """Test NetworkDown failore for Stick."""
-    mock_stick.return_value.connect.side_effect = TimeoutException
-
+    mock_stick.return_value.initialize_stick = Mock(side_effect=(TimeoutException))
     entry = await async_init_integration_usb(hass, mock_stick)
     assert entry.state == ConfigEntryState.SETUP_RETRY
 

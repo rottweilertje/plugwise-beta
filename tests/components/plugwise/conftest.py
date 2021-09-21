@@ -199,25 +199,17 @@ def mock_stick():
         callback_function()
 
     with patch("homeassistant.components.plugwise.usb.Stick") as stick_mock:
-        stick_mock.return_value.connect.side_effect = MagicMock(return_value=None)
-        stick_mock.return_value.initialize_stick.side_effect = MagicMock(
-            return_value=None
-        )
-        stick_mock.return_value.initialize_circle_plus.side_effect = MagicMock(
-            return_value=None
-        )
+        stick_mock.return_value.connect = MagicMock(return_value=None)
+        stick_mock.return_value.initialize_stick = MagicMock(return_value=None)
+        stick_mock.return_value.initialize_circle_plus = MagicMock(return_value=None)
         stick_mock.return_value.scan.side_effect = stick_scan_side_effect
         stick_mock.return_value.devices = _read_json(chosen_env, "devices")
         stick_mock.return_value.joined_nodes = 4
-        stick_mock.return_value.auto_update.side_effect = MagicMock(return_value=None)
-        stick_mock.return_value.allow_join_requests.side_effect = MagicMock(
-            return_value=None
-        )
-        stick_mock.return_value.subscribe_stick_callback.side_effect = MagicMock(
-            return_value=None
-        )
-        stick_mock.return_value.node_join.side_effect = MagicMock(return_value=None)
-        stick_mock.return_value.node_unjoin.side_effect = MagicMock(return_value=None)
-        stick_mock.return_value.disconnect.side_effect = MagicMock(return_value=None)
+        stick_mock.return_value.auto_update = MagicMock(return_value=None)
+        stick_mock.return_value.allow_join_requests = MagicMock(return_value=None)
+        stick_mock.return_value.subscribe_stick_callback = MagicMock(return_value=None)
+        stick_mock.return_value.node_join = MagicMock(return_value=None)
+        stick_mock.return_value.node_unjoin = MagicMock(return_value=None)
+        stick_mock.return_value.disconnect = MagicMock(return_value=None)
 
         yield stick_mock.return_value
