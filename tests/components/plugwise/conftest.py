@@ -8,18 +8,14 @@ import pytest
 from tests.common import load_fixture
 from tests.test_util.aiohttp import AiohttpClientMocker
 
-from plugwise.exceptions import (
-    ConnectionFailedError,
-    InvalidAuthentication,
-    PlugwiseException,
-    XMLDataMissingError,
-)
+from plugwise.exceptions import (ConnectionFailedError, InvalidAuthentication,
+                                 PlugwiseException, XMLDataMissingError)
 
 
 class usb_node:
 
     mac = ""
-    features = ()
+    _features = ()
     hardware_model = ""
     firmware_version = ""
     relay_state = False
@@ -35,6 +31,11 @@ class usb_node:
     rssi_in = 0
     rssi_out = 0
     motion = False
+
+    @property
+    def features(self) -> tuple:
+        """Return the abstracted features supported by this plugwise device."""
+        return self._features
 
 
 def _read_json(environment, call):

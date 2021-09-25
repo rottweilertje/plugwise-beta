@@ -4,7 +4,7 @@
         "mac": "000ABC0000123456",
         "hardware_model": "Circle+ type F",
         "firmware_version": "2011-06-27 10:47:37",
-        "features": {
+        "_features": {
             "py/tuple": [
                 "energy_consumption_today",
                 "ping",
@@ -38,7 +38,7 @@
 		"mac": "000DEF0000654321",
         "hardware_model": "Circle type F",
         "firmware_version": "2011-06-27 10:52:18",
-        "features": {
+        "_features": {
             "py/tuple": [
                 "energy_consumption_today",
                 "ping",
@@ -72,7 +72,7 @@
 		"mac": "0001230000ABC123",
         "hardware_model": "Scan",
         "firmware_version": "2011-06-27 10:55:44",
-        "features": {
+        "_features": {
             "py/tuple": [
                 "ping",
                 "RSSI_in",
@@ -90,7 +90,7 @@
         "mac": "0001230000DEF123",
         "hardware_model": "SCAN",
         "firmware_version": "2011-06-27 10:55:44",
-        "features": {
+        "_features": {
             "py/tuple": [
                 "ping",
                 "RSSI_in",
