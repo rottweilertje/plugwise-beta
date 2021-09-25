@@ -1,24 +1,22 @@
 {
-	"000ABC0000123456": {
-		"mac": "000ABC0000123456",
+    "000ABC0000123456": {
+        "mac": "000ABC0000123456",
         "hardware_model": "Circle+ type F",
         "firmware_version": "2011-06-27 10:47:37",
-		"features": {
-			"py/tuple": [
-				"energy_consumption_today",
-				"ping",
-				"power_1s",
-				"power_8s",
-				"power_con_cur_hour",
-				"power_con_prev_hour",
-				"power_con_today",
-				"power_con_yesterday",
-				"power_prod_cur_hour",
-				"RSSI_in",
-                "RSSI_out",
-				"relay"
-				]
-			},
+        "features": {
+            "energy_consumption_today": "1",
+            "ping": "2",
+            "power_1s": "3",
+            "power_8s": "4",
+            "power_con_cur_hour": "5",
+            "power_con_prev_hour": "6",
+            "power_con_today": "7",
+            "power_con_yesterday": "8",
+            "power_prod_cur_hour": "9",
+            "RSSI_in": "10",
+            "RSSI_out": "11",
+            "relay": "12"
+        },
         "relay_state": true,
         "energy_consumption_today": 100,
         "ping": 10,
@@ -31,27 +29,25 @@
         "power_production_current_hour": 5,
         "rssi_in": 50,
         "rssi_out": 60
-	},
-	"000DEF0000654321": {
-		"mac": "000DEF0000654321",
+    },
+    "000DEF0000654321": {
+        "mac": "000DEF0000654321",
         "hardware_model": "Circle type F",
         "firmware_version": "2011-06-27 10:52:18",
-		"features": {
-			"py/tuple": [
-				"energy_consumption_today",
-				"ping",
-				"power_1s",
-				"power_8s",
-				"power_con_cur_hour",
-				"power_con_prev_hour",
-				"power_con_today",
-				"power_con_yesterday",
-				"power_prod_cur_hour",
-				"RSSI_in",
-                "RSSI_out",
-				"relay"
-				]
-			},
+        "features": {
+            "energy_consumption_today": "1",
+            "ping": "2",
+            "power_1s": "3",
+            "power_8s": "4",
+            "power_con_cur_hour": "5",
+            "power_con_prev_hour": "6",
+            "power_con_today": "7",
+            "power_con_yesterday": "8",
+            "power_prod_cur_hour": "9",
+            "RSSI_in": "10",
+            "RSSI_out": "11",
+            "relay": "12"
+        },
         "relay_state": false,
         "energy_consumption_today": 100,
         "ping": 10,
@@ -65,38 +61,34 @@
         "rssi_in": 50,
         "rssi_out": 60
     },
-	"0001230000ABC123": {
-		"mac": "0001230000ABC123",
+    "0001230000ABC123": {
+        "mac": "0001230000ABC123",
         "hardware_model": "Scan",
         "firmware_version": "2011-06-27 10:55:44",
-		"features": {
-			"py/tuple": [
-				"ping",
-				"RSSI_in",
-                "RSSI_out",
-				"motion"
-				]
-			},
+        "features": {
+            "ping": "1" ,
+            "RSSI_in": "2",
+            "RSSI_out": "3",
+            "motion": "4"
+        },
         "ping": 10,
         "rssi_in": 50,
         "rssi_out": 60,
         "motion": false
-	},
-	"0001230000DEF123": {
-		"mac": "0001230000DEF123",
+    },
+    "0001230000DEF123": {
+        "mac": "0001230000DEF123",
         "hardware_model": "SCAN",
         "firmware_version": "2011-06-27 10:55:44",
-		"features": {
-			"py/tuple": [
-				"ping",
-				"RSSI_in",
-                "RSSI_out",
-				"motion"
-				]
-			},
+        "features": {
+            "ping": "1" ,
+            "RSSI_in": "2",
+            "RSSI_out": "3",
+            "motion": "4"
+        },
         "ping": 10,
         "rssi_in": 50,
         "rssi_out": 60,
         "motion": true
-	}
+    }
 }
