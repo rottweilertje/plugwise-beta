@@ -16,6 +16,27 @@ from plugwise.exceptions import (
 )
 
 
+class usb_node:
+
+    mac = ""
+    features = ()
+    hardware_model = ""
+    firmware_version = ""
+    relay_state = False
+    energy_consumption_today = 0
+    ping = 0
+    current_power_usage = 0
+    current_power_usage_8_sec = 0
+    power_consumption_current_hour = 0
+    power_consumption_previous_hour = 0
+    power_consumption_today = 0
+    power_consumption_yesterday = 0
+    power_production_current_hour = 0
+    rssi_in = 0
+    rssi_out = 0
+    motion = False
+
+
 def _read_json(environment, call):
     """Undecode the json data."""
     fixture = load_fixture(f"plugwise/{environment}/{call}.json")
