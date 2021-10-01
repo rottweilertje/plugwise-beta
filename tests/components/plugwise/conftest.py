@@ -8,34 +8,15 @@ import pytest
 from tests.common import load_fixture
 from tests.test_util.aiohttp import AiohttpClientMocker
 
-from plugwise.exceptions import (ConnectionFailedError, InvalidAuthentication,
-                                 PlugwiseException, XMLDataMissingError)
-
-
-class usb_node:
-
-    mac = ""
-    _features = ()
-    hardware_model = ""
-    firmware_version = ""
-    relay_state = False
-    energy_consumption_today = 0
-    ping = 0
-    current_power_usage = 0
-    current_power_usage_8_sec = 0
-    power_consumption_current_hour = 0
-    power_consumption_previous_hour = 0
-    power_consumption_today = 0
-    power_consumption_yesterday = 0
-    power_production_current_hour = 0
-    rssi_in = 0
-    rssi_out = 0
-    motion = False
-
-    @property
-    def features(self) -> tuple:
-        """Return the abstracted features supported by this plugwise device."""
-        return self._features
+from plugwise.exceptions import (
+    ConnectionFailedError,
+    InvalidAuthentication,
+    PlugwiseException,
+    XMLDataMissingError,
+)
+from plugwise.nodes.circle import PlugwiseCircle
+from plugwise.nodes.circle_plus import PlugwiseCirclePlus
+from plugwise.nodes.scan import PlugwiseScan
 
 
 def _read_json(environment, call):
@@ -226,7 +207,7 @@ def mock_stick():
         stick_mock.return_value.initialize_circle_plus = MagicMock(return_value=None)
         stick_mock.return_value.scan.side_effect = stick_scan_side_effect
         stick_mock.return_value.devices = _read_json(chosen_env, "devices")
-        stick_mock.return_value.joined_nodes = 4
+        stick_mock.return_value.joined_nodes = 12
         stick_mock.return_value.auto_update = MagicMock(return_value=None)
         stick_mock.return_value.allow_join_requests = MagicMock(return_value=None)
         stick_mock.return_value.subscribe_stick_callback = MagicMock(return_value=None)
