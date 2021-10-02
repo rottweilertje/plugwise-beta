@@ -3,6 +3,9 @@
       "py/object":"plugwise.nodes.circle_plus.PlugwiseCirclePlus",
       "calibration":true,
       "_available":true,
+      "_callbacks":{
+          
+      },
       "_energy_consumption_today_reset":{
          "py/object":"datetime.datetime",
          "__reduce__":[
@@ -67,6 +70,9 @@
       "py/object":"plugwise.nodes.circle.PlugwiseCircle",
       "calibration":true,
       "_available":true,
+      "_callbacks":{
+          
+      },
       "_energy_consumption_today_reset":{
          "py/object":"datetime.datetime",
          "__reduce__":[
@@ -130,6 +136,9 @@
    "000D6F00019DB17B":{
       "py/object":"plugwise.nodes.scan.PlugwiseScan",
       "_available":true,
+      "_callbacks":{
+          
+      },
       "_features":{
          "py/tuple":[
             "motion",
@@ -162,6 +171,9 @@
    "000D6F00019D9C94":{
       "py/object":"plugwise.nodes.scan.PlugwiseScan",
       "_available":true,
+      "_callbacks":{
+          
+      },
       "_features":{
          "py/tuple":[
             "motion",
