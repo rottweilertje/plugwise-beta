@@ -86,20 +86,11 @@ async def test_stick_binary_sensor_entities(hass, mock_stick):
     entry = await async_init_integration_usb(hass, mock_stick)
     assert entry.state == ConfigEntryState.LOADED
 
-    a_sensor = "binary_sensor.motion_bc123"
-    registry = await async_get_registry(hass)
-    updated_entry = registry.async_update_entity(a_sensor, disabled_by=None)
-
-    assert updated_entry != entry
-    assert updated_entry.disabled is False
-
-    await hass.async_block_till_done()
-
     await hass.config_entries.async_reload(entry.entry_id)
     await hass.async_block_till_done()
 
-    state = hass.states.get("binary_sensor.motion_bc123")
+    state = hass.states.get("binary_sensor.motion_db17b")
     assert str(state.state) == STATE_OFF
 
-    state = hass.states.get("binary_sensor.motion_ef123")
-    assert str(state.state) == STATE_OFF
+    state = hass.states.get("binary_sensor.motion_d9c94")
+    assert str(state.state) == STATE_ON
