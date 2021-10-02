@@ -55,6 +55,18 @@
       "_mac":{
          "py/b64":"MDAwRDZGMDAwMDQ2QTA3OA=="
       },
+      "_new_relay_state":false,
+      "_new_relay_stamp":{
+         "py/object":"datetime.datetime",
+         "__reduce__":[
+            {
+               "py/type":"datetime.datetime"
+            },
+            [
+               "B+UKARQYNAXNBg=="
+            ]
+         ]
+      },
       "_node_type":1,
       "_ping":69,
       "_relay_state":true,
@@ -121,6 +133,18 @@
       "_hardware_version":"000004400107",
       "_mac":{
          "py/b64":"MDAwRDZGMDAwMDNGRjVFNQ=="
+      },
+      "_new_relay_state":false,
+      "_new_relay_stamp":{
+         "py/object":"datetime.datetime",
+         "__reduce__":[
+            {
+               "py/type":"datetime.datetime"
+            },
+            [
+               "B+UKARQZAgtGbg=="
+            ]
+         ]
       },
       "_node_type":2,
       "_ping":41,
