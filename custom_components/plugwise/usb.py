@@ -59,7 +59,6 @@ async def async_setup_entry_usb(hass: HomeAssistant, config_entry: ConfigEntry):
             hass.data[DOMAIN][config_entry.entry_id][component] = []
 
         for mac, pw_device in api_stick.devices.items():
-            _LOGGER.debug("mac = %s, pw_device = %s ", mac, str(pw_device))
             # Skip unsupported devices
             if pw_device is not None:
                 if USB_RELAY_ID in pw_device.features:
