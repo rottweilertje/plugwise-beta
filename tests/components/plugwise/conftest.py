@@ -207,7 +207,7 @@ def mock_stick():
         stick_mock.return_value.initialize_circle_plus = MagicMock(return_value=None)
         stick_mock.return_value.scan.side_effect = stick_scan_side_effect
         stick_mock.return_value.devices = _read_json(chosen_env, "devices")
-        stick_mock.return_value.joined_nodes = 12
+        stick_mock.return_value.joined_nodes = 4
         stick_mock.return_value.auto_update = MagicMock(return_value=None)
         stick_mock.return_value.allow_join_requests = MagicMock(return_value=None)
         stick_mock.return_value.subscribe_stick_callback = MagicMock(return_value=None)
