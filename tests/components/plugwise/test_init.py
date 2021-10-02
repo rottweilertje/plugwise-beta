@@ -105,6 +105,13 @@ async def test_stick_timeout_exception(hass, mock_stick):
     assert entry.state == ConfigEntryState.SETUP_RETRY
 
 
+async def test_stick_circleplus_exception(hass, mock_stick):
+    """Test NetworkDown failore for Stick."""
+    mock_stick.return_value.initialize_circle_plus = Mock(side_effect=(CirclePlusError))
+    entry = await async_init_integration_usb(hass, mock_stick)
+    assert entry.state == ConfigEntryState.SETUP_RETRY
+
+
 async def test_unload_entry_stick(hass, mock_stick):
     """Test being able to unload a stick entry."""
     entry = await async_init_integration_usb(hass, mock_stick)
